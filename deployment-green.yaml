@@ -1,0 +1,17 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: suyamai-deployment-green
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: suyamai-app-green
+    spec:
+      containers:
+        - image: gcr.io/[your-project]/[user-identifer]/nginx:latest
+          imagePullPolicy: Always
+          name: suyamai-ctn
+          ports:
+          - containerPort: 80
