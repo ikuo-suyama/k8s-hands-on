@@ -45,7 +45,7 @@ gke-suyamai-cluster-default-pool-93519135-fnt6   Ready     <none>    50m       v
 gke-suyamai-cluster-default-pool-93519135-wmjc   Ready     <none>    50m       v1.8.10-gke.0
 ```
 
-### deploymentの作成
+### 3. Deploymentの作成
 ```sh
 $ kubectl create -f deployment.yaml --save-config --record=true
 deployment.apps "suyamai-deployment" created
@@ -61,7 +61,7 @@ NAME                 DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 suyamai-deployment   3         3         3            3           3m
 ```
 
-### serviceの作成
+### 4. Serviceの作成
 作成した時点で外部公開される。（type=LoadBaranserのおかげ？）
 
 ```sh
@@ -80,7 +80,7 @@ suyamai-service   LoadBalancer   10.11.253.161   35.200.86.154   80:31988/TCP   
 :
 ```
 
-### deploymentの更新（rolling deploy)
+### 5. Deploymentの更新（rolling deploy)
 replicaを満たすよう、順次新しいコンテナが起動,古いコンテナが停止する
 
 ```sh
@@ -96,7 +96,7 @@ suyamai-deployment-7f8c7bc444-zj9w4   1/1       Running             0          7
 suyamai-deployment-9ff69b5d7-s4txk    0/1       ContainerCreating   0          5s
 ```
 
-### blue/greenデプロイ
+### 6. Blue/Greenデプロイ
 serviceのselectorを切り替える。
 （他にもやりようはありそう）
 
@@ -156,7 +156,7 @@ Selector:                 app=suyamai-app-green
 :
 ```
 
-### 削除
+### 7. 削除
 ```
 $ kubectl delete service suyamai-service
 service "suyamai-service" deleted
