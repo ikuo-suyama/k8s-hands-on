@@ -1,6 +1,12 @@
 ## これは何
 kubernetesの基礎を試した記録です。
 
+[your-project] : project name
+[your-account] : google account id
+[user-identifer] : 任意の名前
+
+でドキュメント全体を置換してください。
+
 ## 準備
 ```
 $ brew cask install docker
